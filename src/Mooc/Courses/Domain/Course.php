@@ -16,10 +16,19 @@ final class Course
         $this->duration = $duration;
     }
 
-    public function __invoke(string $id, string $name, string $duration)
+    function id()
     {
-        $course = new Course($id, $name, $duration);
-        $this->repository->save($course);
+        return $this->id;
+    }
+
+    function name()
+    {
+        return $this->name;
+    }
+
+    function duration()
+    {
+        return $this->duration;
     }
 
 }
