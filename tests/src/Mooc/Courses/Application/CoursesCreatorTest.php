@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Mooc\Courses\Application;
 
+use CodelyTv\Mooc\Courses\Application\CreateCourseRequest;
 use PHPUnit\Framework\TestCase;
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
 use CodelyTv\Mooc\Courses\Domain\Course;
@@ -25,7 +26,7 @@ final class CoursesCreatorTest extends TestCase
         $course = new Course($id,$name,$duration);
         $repository->method('save')->with($course);
         
-        $creator->__invoke($id, $name, $duration);
+        $creator->__invoke(new CreateCourseRequest($id, $name, $duration));
     }
 
 }

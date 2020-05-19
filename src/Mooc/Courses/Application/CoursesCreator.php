@@ -17,9 +17,9 @@ final class CoursesCreator
         $this->repository = $repository;
     }
 
-    public function __invoke(string $id, string $name, string $duration)
+    public function __invoke(CreateCourseRequest $request)
     {
-        $course = new Course($id, $name, $duration);
+        $course = new Course($request->id(), $request->name(), $request->duration());
         $this->repository->save($course);
     }
 
