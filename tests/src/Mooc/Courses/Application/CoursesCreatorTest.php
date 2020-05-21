@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Mooc\Courses\Application;
 
-use CodelyTv\Mooc\Courses\Application\CreateCourseRequest;
-use CodelyTv\Mooc\Courses\Domain\CourseDuration;
-use CodelyTv\Mooc\Courses\Domain\CourseId;
-use CodelyTv\Mooc\Courses\Domain\CourseName;
+use CodelyTv\Tests\Mooc\Courses\Application\Create\CreateCourseRequestMother;
+use CodelyTv\Tests\Mooc\Courses\Domain\CourseMother;
 use PHPUnit\Framework\TestCase;
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
-use CodelyTv\Mooc\Courses\Domain\Course;
 use CodelyTv\Mooc\Courses\Application\CoursesCreator;
 
 final class CoursesCreatorTest extends TestCase
@@ -22,12 +19,8 @@ final class CoursesCreatorTest extends TestCase
         $repository = $this->createMock(CourseRepository::class);
         $creator = new CoursesCreator($repository);
 
-        $request = new CreateCourseRequest('decf33ca-81a7-419f-a07a-74f214e928e5', 'some-name', 'some-duration');
-        $course = new Course(
-            new CourseId($request->id()),
-            new CourseName($request->name()),
-            new CourseDuration($request->duration())
-        );
+        $request = CreateCourseRequestMother::random();
+        $course  = CourseMother::fromRequest($request);
         $repository->method('save')->with($course);
         
         $creator->__invoke($request);
