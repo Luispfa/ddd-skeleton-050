@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CodelyTv\Tests\Mooc\Courses\Infrastructure;
+namespace CodelyTv\Tests\Mooc\Courses\Infrastructure\Persistance;
 
 use CodelyTv\Mooc\Courses\Domain\CourseId;
-use CodelyTv\Mooc\Courses\Infrastructure\FileCourseRepository;
+use CodelyTv\Mooc\Courses\Infrastructure\Persistence\FileCourseRepository;
 use CodelyTv\Tests\Mooc\Courses\Domain\CourseIdMother;
 use CodelyTv\Tests\Mooc\Courses\Domain\CourseMother;
 use PHPUnit\Framework\TestCase;

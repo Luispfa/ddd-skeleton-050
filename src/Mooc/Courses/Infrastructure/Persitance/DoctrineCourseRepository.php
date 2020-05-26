@@ -7,9 +7,10 @@ namespace CodelyTv\Mooc\Courses\Infrastructure\Persistence;
 use CodelyTv\Mooc\Courses\Domain\Course;
 use CodelyTv\Mooc\Courses\Domain\CourseId;
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
+use CodelyTv\Shared\Infrastructure\Persistence\Doctrine\DoctrineRepository;
 use Doctrine\ORM\EntityManager;
 
-final class MySqlCourseRepository implements CourseRepository
+final class DoctrineCourseRepository extends DoctrineRepository  implements CourseRepository
 {
     private $entityManager;
 
@@ -21,7 +22,7 @@ final class MySqlCourseRepository implements CourseRepository
     public function save(Course $course): void
     {
         $this->entityManager->persist($course);
-        $this->entityManager->flush($course);
+        //$this->entityManager->flush($course);
     }
 
     public function search(CourseId $id): ?Course
