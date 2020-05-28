@@ -26,3 +26,4 @@ final class MoocEnvironmentArranger implements EnvironmentArranger
     public function close(): void
     {
     }
+}

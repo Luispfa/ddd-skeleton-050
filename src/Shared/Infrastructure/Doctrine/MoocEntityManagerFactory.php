@@ -13,13 +13,16 @@ final class MoocEntityManagerFactory
 
     public static function create(array $parameters, string $environment): EntityManagerInterface
     {
-        $isDevMode = 'prod' === $environment;
+        $isDevMode = 'prod' !== $environment;
+        $prefixes               = DoctrinePrefixesSearcher::inPath(__DIR__ . '/../../../../Mooc', 'CodelyTv\Mooc');
+        $dbalCustomTypesClasses = DbalTypesSearcher::inPath(__DIR__ . '/../../../../Mooc', 'Mooc');
 
         return DoctrineEntityManagerFactory::create(
             $parameters,
-            DoctrinePrefixesSearcher::inPath(__DIR__ . '/../../../../Mooc', 'CodelyTv\Mooc'),
+            $prefixes,
             $isDevMode,
-            self::SCHEMA_PATH
+            self::SCHEMA_PATH,
+             $dbalCustomTypesClasses
         );
     }
 }
