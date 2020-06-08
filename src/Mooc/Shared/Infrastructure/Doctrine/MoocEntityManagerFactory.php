@@ -14,6 +14,7 @@ final class MoocEntityManagerFactory
     public static function create(array $parameters, string $environment): EntityManagerInterface
     {
         $isDevMode = 'prod' !== $environment;
+
         $prefixes               = DoctrinePrefixesSearcher::inPath(__DIR__ . '/../../../../Mooc', 'CodelyTv\Mooc');
         $dbalCustomTypesClasses = DbalTypesSearcher::inPath(__DIR__ . '/../../../../Mooc', 'Mooc');
 
@@ -22,7 +23,7 @@ final class MoocEntityManagerFactory
             $prefixes,
             $isDevMode,
             self::SCHEMA_PATH,
-             $dbalCustomTypesClasses
+            $dbalCustomTypesClasses
         );
     }
 }

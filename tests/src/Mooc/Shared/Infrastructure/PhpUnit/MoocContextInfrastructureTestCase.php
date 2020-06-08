@@ -26,9 +26,4 @@ abstract class MoocContextInfrastructureTestCase extends InfrastructureTestCase
 
         parent::tearDown();
     }
-
-    protected function clearUnitOfWork()
-    {
-        $this->service(EntityManager::class)->clear();
-    }
 }

@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace CodelyTv\Mooc\Courses\Application;
+namespace CodelyTv\Mooc\Courses\Application\Create;
 
+use CodelyTv\Mooc\Courses\Domain\Course;
 use CodelyTv\Mooc\Courses\Domain\CourseDuration;
 use CodelyTv\Mooc\Courses\Domain\CourseId;
 use CodelyTv\Mooc\Courses\Domain\CourseName;
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
-use CodelyTv\Mooc\Courses\Domain\Course;
 
-final class CoursesCreator
+final class CourseCreator
 {
-
     private $repository;
 
     public function __construct(CourseRepository $repository)
@@ -22,12 +21,12 @@ final class CoursesCreator
 
     public function __invoke(CreateCourseRequest $request)
     {
-        $course = new Course(
-            new CourseId($request->id()),
-            new CourseName($request->name()),
-            new CourseDuration($request->duration())
-        );
+        $id       = new CourseId($request->id());
+        $name     = new CourseName($request->name());
+        $duration = new CourseDuration($request->duration());
+
+        $course = new Course($id, $name, $duration);
+
         $this->repository->save($course);
     }
-
 }
