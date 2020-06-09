@@ -9,7 +9,7 @@ services:
 
 
   _instanceof:
-    CodelyTv\Shared\Domain\Bus\DomainEventSubscriber:
+    CodelyTv\Shared\Domain\Bus\Event\DomainEventSubscriber:
       tags: ['codely.domain_even_subscriber']
 
   CodelyTv\Apps\Mooc\Backend\Controller\:
@@ -24,6 +24,9 @@ services:
     resource: '../../../../src'
 
   CodelyTv\Shared\Infrastructure\Bus\Event\SymfonySyncEventBus:
+    arguments: [!tagged codely.domain_even_subscriber]
+
+  CodelyTv\Shared\Infrastructure\Bus\Event\DomainEventMapping:
     arguments: [!tagged codely.domain_even_subscriber]
 
   CodelyTv\Shared\Infrastructure\Symfony\AddJsonBodyToRequestListener:
