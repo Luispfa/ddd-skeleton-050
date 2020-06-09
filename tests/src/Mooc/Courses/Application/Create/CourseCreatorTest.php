@@ -7,6 +7,7 @@ namespace CodelyTv\Tests\Mooc\Courses\Application\Create;
 use CodelyTv\Mooc\Courses\Application\Create\CourseCreator;
 use CodelyTv\Tests\Mooc\Courses\Application\Domain\CourseMother;
 use CodelyTv\Tests\Mooc\Courses\CoursesModuleUnitTestCase;
+use CodelyTv\Tests\Mooc\Courses\Domain\CourseCreatedDomainEventMother;
 
 final class CourseCreatorTest extends CoursesModuleUnitTestCase
 {
@@ -25,8 +26,10 @@ final class CourseCreatorTest extends CoursesModuleUnitTestCase
         $request = CreateCourseRequestMother::random();
 
         $course = CourseMother::fromRequest($request);
+        $domainEvent = CourseCreatedDomainEventMother::fromCourse($course);
 
         $this->shouldSave($course);
+        $this->shouldPublishDomainEvent($domainEvent);
 
         $this->creator->__invoke($request);
     }
