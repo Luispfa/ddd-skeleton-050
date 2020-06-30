@@ -9,7 +9,7 @@ namespace CodelyTv\Tests\Mooc\Courses\Domain;
 use CodelyTv\Mooc\Courses\Domain\Course;
 use CodelyTv\Mooc\Courses\Domain\CourseCreatedDomainEvent;
 use CodelyTv\Mooc\Courses\Domain\CourseDuration;
-use CodelyTv\Mooc\Courses\Domain\CourseId;
+use CodelyTv\Mooc\Shared\Domain\Course\CourseId;
 use CodelyTv\Mooc\Courses\Domain\CourseName;
 
 final class CourseCreatedDomainEventMother

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CodelyTv\Tests\Mooc\Courses\Infrastructure\Persistance;
 
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
-use CodelyTv\Mooc\Courses\Infrastructure\Persistence\DoctrineCourseRepository;
+use CodelyTv\Mooc\Courses\Infrastructure\Persistence\CoursesCounterRepository;
 use CodelyTv\Tests\Mooc\Courses\CoursesModuleInfrastructureTestCase;
 use CodelyTv\Tests\Mooc\Courses\Domain\CourseIdMother;
 use CodelyTv\Tests\Mooc\Courses\Domain\CourseMother;
@@ -39,7 +39,7 @@ final class DoctrineCourseRepositoryTest extends CoursesModuleInfrastructureTest
 
     private function doctrineRepository(): CourseRepository
     {
-        return new DoctrineCourseRepository($this->service(EntityManager::class));
+        return new CoursesCounterRepository($this->service(EntityManager::class));
     }
 
     public function clearUnitOfWork(): void

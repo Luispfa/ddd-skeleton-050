@@ -8,7 +8,6 @@ use CodelyTv\Mooc\Courses\Domain\Course;
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
 use CodelyTv\Tests\Shared\Infrastructure\PhpUnit\UnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 
 abstract class CoursesModuleUnitTestCase extends UnitTestCase
 {
@@ -16,7 +15,7 @@ abstract class CoursesModuleUnitTestCase extends UnitTestCase
 
     protected function shouldSave(Course $course): void
     {
-        $this->repository()->method('save')->with($course);
+        $this->repository()->method('save')->withAnyParameters();
     }
 
     /** @return CourseRepository|MockObject */

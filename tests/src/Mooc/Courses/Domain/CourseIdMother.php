@@ -4,7 +4,7 @@
 namespace CodelyTv\Tests\Mooc\Courses\Domain;
 
 
-use CodelyTv\Mooc\Courses\Domain\CourseId;
+use CodelyTv\Mooc\Shared\Domain\Course\CourseId;
 use CodelyTv\Tests\Shared\Domain\UuidMother;
 
 class CourseIdMother
